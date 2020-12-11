@@ -1,16 +1,4 @@
-const readline = require("readline");
-
-const readWhole = () => {
-  let res = [];
-  const rl = readline.createInterface({
-    input: process.stdin,
-  });
-  return new Promise((resolve, reject) => {
-    process.stdin.on("end", () => resolve(res));
-    rl.on("line", res.push.bind(res));
-  });
-};
-
+const {readAll} = require("./util");
 /**
  * @param {number} x
  * @param {number} y
@@ -89,7 +77,7 @@ const iterate = (board) => {
 };
 
 const main = async () => {
-  const input = await readWhole();
+  const input = await readAll();
   const board = input.map((line) => [...line]);
   let iterations = 0;
 
